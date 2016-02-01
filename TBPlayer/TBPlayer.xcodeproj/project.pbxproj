@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C23DDBE21C5F51E300488FD8 /* MBProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C23DDBDD1C5F51E300488FD8 /* MBProgressHUD.bundle */; };
+		C23DDBE31C5F51E300488FD8 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = C23DDBDF1C5F51E300488FD8 /* MBProgressHUD.m */; };
+		C23DDBE41C5F51E300488FD8 /* XCHudHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = C23DDBE11C5F51E300488FD8 /* XCHudHelper.m */; };
+		C23DDBEB1C5F53F400488FD8 /* TBloaderURLConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = C23DDBE61C5F53F400488FD8 /* TBloaderURLConnection.m */; };
+		C23DDBED1C5F53F400488FD8 /* TBVideoRequestTask.m in Sources */ = {isa = PBXBuildFile; fileRef = C23DDBEA1C5F53F400488FD8 /* TBVideoRequestTask.m */; };
+		C23DDBF11C5F55E500488FD8 /* iToast.m in Sources */ = {isa = PBXBuildFile; fileRef = C23DDBF01C5F55E500488FD8 /* iToast.m */; };
 		C26C5D901C5DE4A900BAD17A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C26C5D8F1C5DE4A900BAD17A /* main.m */; };
 		C26C5D931C5DE4A900BAD17A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C26C5D921C5DE4A900BAD17A /* AppDelegate.m */; };
 		C26C5D961C5DE4A900BAD17A /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C26C5D951C5DE4A900BAD17A /* ViewController.m */; };
@@ -18,6 +24,17 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C23DDBDD1C5F51E300488FD8 /* MBProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MBProgressHUD.bundle; sourceTree = "<group>"; };
+		C23DDBDE1C5F51E300488FD8 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		C23DDBDF1C5F51E300488FD8 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
+		C23DDBE01C5F51E300488FD8 /* XCHudHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XCHudHelper.h; sourceTree = "<group>"; };
+		C23DDBE11C5F51E300488FD8 /* XCHudHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XCHudHelper.m; sourceTree = "<group>"; };
+		C23DDBE51C5F53F400488FD8 /* TBloaderURLConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBloaderURLConnection.h; sourceTree = "<group>"; };
+		C23DDBE61C5F53F400488FD8 /* TBloaderURLConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBloaderURLConnection.m; sourceTree = "<group>"; };
+		C23DDBE91C5F53F400488FD8 /* TBVideoRequestTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBVideoRequestTask.h; sourceTree = "<group>"; };
+		C23DDBEA1C5F53F400488FD8 /* TBVideoRequestTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBVideoRequestTask.m; sourceTree = "<group>"; };
+		C23DDBEF1C5F55E500488FD8 /* iToast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iToast.h; sourceTree = "<group>"; };
+		C23DDBF01C5F55E500488FD8 /* iToast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iToast.m; sourceTree = "<group>"; };
 		C26C5D8B1C5DE4A900BAD17A /* TBPlayer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TBPlayer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C26C5D8F1C5DE4A900BAD17A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		C26C5D911C5DE4A900BAD17A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -44,6 +61,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C23DDBDC1C5F51E300488FD8 /* XCHudHelper */ = {
+			isa = PBXGroup;
+			children = (
+				C23DDBDD1C5F51E300488FD8 /* MBProgressHUD.bundle */,
+				C23DDBDE1C5F51E300488FD8 /* MBProgressHUD.h */,
+				C23DDBDF1C5F51E300488FD8 /* MBProgressHUD.m */,
+				C23DDBE01C5F51E300488FD8 /* XCHudHelper.h */,
+				C23DDBE11C5F51E300488FD8 /* XCHudHelper.m */,
+			);
+			path = XCHudHelper;
+			sourceTree = "<group>";
+		};
+		C23DDBEE1C5F55E500488FD8 /* iToast */ = {
+			isa = PBXGroup;
+			children = (
+				C23DDBEF1C5F55E500488FD8 /* iToast.h */,
+				C23DDBF01C5F55E500488FD8 /* iToast.m */,
+			);
+			path = iToast;
+			sourceTree = "<group>";
+		};
 		C26C5D821C5DE4A900BAD17A = {
 			isa = PBXGroup;
 			children = (
@@ -63,12 +101,18 @@
 		C26C5D8D1C5DE4A900BAD17A /* TBPlayer */ = {
 			isa = PBXGroup;
 			children = (
+				C23DDBEE1C5F55E500488FD8 /* iToast */,
+				C23DDBDC1C5F51E300488FD8 /* XCHudHelper */,
 				C26C5D911C5DE4A900BAD17A /* AppDelegate.h */,
 				C26C5D921C5DE4A900BAD17A /* AppDelegate.m */,
 				C26C5D941C5DE4A900BAD17A /* ViewController.h */,
 				C26C5D951C5DE4A900BAD17A /* ViewController.m */,
 				C26C5DA51C5DEB6400BAD17A /* TBPlayer.h */,
 				C26C5DA61C5DEB6400BAD17A /* TBPlayer.m */,
+				C23DDBE51C5F53F400488FD8 /* TBloaderURLConnection.h */,
+				C23DDBE61C5F53F400488FD8 /* TBloaderURLConnection.m */,
+				C23DDBE91C5F53F400488FD8 /* TBVideoRequestTask.h */,
+				C23DDBEA1C5F53F400488FD8 /* TBVideoRequestTask.m */,
 				C26C5D971C5DE4A900BAD17A /* Main.storyboard */,
 				C26C5DA81C5DFEA800BAD17A /* 112.mp4 */,
 				C26C5D9A1C5DE4A900BAD17A /* Assets.xcassets */,
@@ -146,6 +190,7 @@
 			files = (
 				C26C5D9E1C5DE4A900BAD17A /* LaunchScreen.storyboard in Resources */,
 				C26C5D9B1C5DE4A900BAD17A /* Assets.xcassets in Resources */,
+				C23DDBE21C5F51E300488FD8 /* MBProgressHUD.bundle in Resources */,
 				C26C5DA91C5DFEA800BAD17A /* 112.mp4 in Resources */,
 				C26C5D991C5DE4A900BAD17A /* Main.storyboard in Resources */,
 			);
@@ -159,7 +204,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				C26C5DA71C5DEB6400BAD17A /* TBPlayer.m in Sources */,
+				C23DDBEB1C5F53F400488FD8 /* TBloaderURLConnection.m in Sources */,
 				C26C5D961C5DE4A900BAD17A /* ViewController.m in Sources */,
+				C23DDBF11C5F55E500488FD8 /* iToast.m in Sources */,
+				C23DDBE41C5F51E300488FD8 /* XCHudHelper.m in Sources */,
+				C23DDBE31C5F51E300488FD8 /* MBProgressHUD.m in Sources */,
+				C23DDBED1C5F53F400488FD8 /* TBVideoRequestTask.m in Sources */,
 				C26C5D931C5DE4A900BAD17A /* AppDelegate.m in Sources */,
 				C26C5D901C5DE4A900BAD17A /* main.m in Sources */,
 			);
@@ -308,6 +358,7 @@
 				C26C5DA41C5DE4A900BAD17A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

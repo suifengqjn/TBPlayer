@@ -26,8 +26,10 @@
     
     
     NSString *url = [[NSBundle mainBundle] pathForResource:@"112" ofType:@"mp4"];
+    NSURL *url1 = [NSURL URLWithString:url];
+    NSURL *url2 = [NSURL URLWithString:@"http://lxcdn.miaopai.com/stream/2JBg-3tXYcq~VXumZWTJgQ__.mp4"];
     
-     [[TBPlayer sharedInstance] playWithUrl:[NSURL fileURLWithPath:url] showView:self.view];
+     [[TBPlayer sharedInstance] playWithUrl:url2 showView:self.view];
 
 
 }

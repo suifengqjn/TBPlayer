@@ -7,7 +7,10 @@
 //
 
 #import "TBPlayer.h"
+#import "TBloaderURLConnection.h"
+#import "TBVideoRequestTask.h"
 #import <MediaPlayer/MediaPlayer.h>
+#import "XCHudHelper.h"
 
 #define kScreenHeight ([UIScreen mainScreen].bounds.size.height)
 #define kScreenWidth ([UIScreen mainScreen].bounds.size.width)
@@ -17,13 +20,16 @@ NSString *const kTBPlayerProgressChangedNotification = @"TBPlayerProgressChanged
 NSString *const kTBPlayerLoadProgressChangedNotification = @"TBPlayerLoadProgressChangedNotification";
 
 
-@interface TBPlayer ()
+@interface TBPlayer ()<TBloaderURLConnectionDelegate>
 
 @property (nonatomic        ) TBPlayerState  state;
 @property (nonatomic        ) CGFloat        loadedProgress;//缓冲进度
 @property (nonatomic        ) CGFloat        duration;//视频总时间
 @property (nonatomic        ) CGFloat        current;//当前播放时间
 
+@property (nonatomic, strong) AVURLAsset     *videoURLAsset;
+@property (nonatomic, strong) AVAsset        *videoAsset;
+@property (nonatomic, strong) TBloaderURLConnection *resouerLoader;
 @property (nonatomic, strong) AVPlayer       *player;
 @property (nonatomic, strong) AVPlayerItem   *currentPlayerItem;
 @property (nonatomic, strong) AVPlayerLayer  *currentPlayerLayer;
@@ -38,7 +44,7 @@ NSString *const kTBPlayerLoadProgressChangedNotification = @"TBPlayerLoadProgres
 @property (nonatomic, strong) UIProgressView *videoProgressView;  //缓冲进度条
 @property (nonatomic, strong) UISlider       *playSlider;  //滑竿
 @property (nonatomic, strong) UIButton       *stopButton;//播放暂停按钮
-
+@property (nonatomic, strong) XCHudHelper    *hudHelper;
 @end
 
 @implementation TBPlayer
@@ -63,25 +69,11 @@ NSString *const kTBPlayerLoadProgressChangedNotification = @"TBPlayerLoadProgres
         _current  = 0;
         _state = TBPlayerStateStopped;
         _stopWhenAppDidEnterBackground = YES;
+        _hudHelper = [[XCHudHelper alloc] init];
     }
     return self;
 }
 
-- (void)configSession
-{
-    AVAudioSession *audioSession = [AVAudioSession sharedInstance];
-    // app在后台只有设置AVAudioSessionCategoryPlayAndRecord才能实现播放声音
-    if ([UIApplication sharedApplication].applicationState == UIApplicationStateBackground) {
-        [audioSession setCategory:AVAudioSessionCategoryPlayAndRecord error:NULL];
-    } else {
-        [audioSession setCategory:AVAudioSessionCategoryPlayback error:NULL];
-    }
-    // 设置为AVAudioSessionModeVoiceChat保证了在后台可以播放音乐
-    [audioSession setMode:AVAudioSessionModeVoiceChat error:NULL];
-    // 设置这个仅保证插入耳机后切换到了耳机，如果是在耳机插入状态下播放音乐还是通过扬声器
-    [audioSession overrideOutputAudioPort:AVAudioSessionPortOverrideSpeaker error:NULL];
-    [audioSession setActive:YES error:NULL];
-}
 //清空播放器监听属性
 - (void)releasePlayer
 {
@@ -103,13 +95,48 @@ NSString *const kTBPlayerLoadProgressChangedNotification = @"TBPlayerLoadProgres
 {
     [self.player pause];
     [self releasePlayer];
-    [self configSession];
     self.isPauseByUser = NO;
     self.loadedProgress = 0;
     self.duration = 0;
     self.current  = 0;
     
-    self.currentPlayerItem = [AVPlayerItem playerItemWithURL:url];
+    
+    NSString *str = [url absoluteString];
+    //如果是ios  < 7 或者是本地资源，直接播放
+    if (IOS_VERSION < 7.0 || ![str hasPrefix:@"http"]) {
+        self.videoAsset  = [AVURLAsset URLAssetWithURL:url options:nil];
+        self.currentPlayerItem          = [AVPlayerItem playerItemWithAsset:_videoAsset];
+        if (!self.player) {
+            self.player = [AVPlayer playerWithPlayerItem:self.currentPlayerItem];
+        } else {
+            [self.player replaceCurrentItemWithPlayerItem:self.currentPlayerItem];
+        }
+        self.currentPlayerLayer       = [AVPlayerLayer playerLayerWithPlayer:self.player];
+        self.currentPlayerLayer.frame = CGRectMake(0, 44, showView.bounds.size.width, showView.bounds.size.height-44);
+        _isLocalVideo = YES;
+        
+    } else {   //ios7以上采用resourceLoader给播放器补充数据
+        
+        self.resouerLoader          = [[TBloaderURLConnection alloc] init];
+        self.resouerLoader.delegate = self;
+        NSURL *playUrl              = [_resouerLoader getSchemeVideoURL:url];
+        self.videoURLAsset             = [AVURLAsset URLAssetWithURL:playUrl options:nil];
+        [_videoURLAsset.resourceLoader setDelegate:_resouerLoader queue:dispatch_get_main_queue()];
+        self.currentPlayerItem          = [AVPlayerItem playerItemWithAsset:_videoURLAsset];
+        
+        if (!self.player) {
+            self.player = [AVPlayer playerWithPlayerItem:self.currentPlayerItem];
+        } else {
+            [self.player replaceCurrentItemWithPlayerItem:self.currentPlayerItem];
+        }
+        self.currentPlayerLayer       = [AVPlayerLayer playerLayerWithPlayer:self.player];
+        self.currentPlayerLayer.frame = CGRectMake(0, 44, showView.bounds.size.width, showView.bounds.size.height-44);
+        _isLocalVideo = NO;
+        
+    }
+    
+    [showView.layer addSublayer:self.currentPlayerLayer];
+
     [self.currentPlayerItem addObserver:self forKeyPath:@"status" options:NSKeyValueObservingOptionNew context:nil];
     [self.currentPlayerItem addObserver:self forKeyPath:@"loadedTimeRanges" options:NSKeyValueObservingOptionNew context:nil];
     [self.currentPlayerItem addObserver:self forKeyPath:@"playbackBufferEmpty" options:NSKeyValueObservingOptionNew context:nil];
@@ -144,14 +171,8 @@ NSString *const kTBPlayerLoadProgressChangedNotification = @"TBPlayerLoadProgres
     
     
     
-    if (!self.player) {
-        self.player = [AVPlayer playerWithPlayerItem:self.currentPlayerItem];
-    } else {
-        [self.player replaceCurrentItemWithPlayerItem:self.currentPlayerItem];
-    }
-    self.currentPlayerLayer       = [AVPlayerLayer playerLayerWithPlayer:self.player];
-    self.currentPlayerLayer.frame = showView.bounds;
-    [showView.layer addSublayer:self.currentPlayerLayer];
+    
+
     if (!_navBar) {
         _navBar = [[UIView alloc] init];
         [showView addSubview:_navBar];
@@ -207,7 +228,6 @@ NSString *const kTBPlayerLoadProgressChangedNotification = @"TBPlayerLoadProgres
         return;
     }
     
-    [self configSession];
     [_stopButton setImage:[UIImage imageNamed:@"icon_pause"] forState:UIControlStateNormal];
     [_stopButton setImage:[UIImage imageNamed:@"icon_pause_hl"] forState:UIControlStateHighlighted];
     self.isPauseByUser = NO;
@@ -523,6 +543,48 @@ NSString *const kTBPlayerLoadProgressChangedNotification = @"TBPlayerLoadProgres
     [self.playSlider setValue:currentSecond animated:YES];
 }
 
+
+#pragma mark - TBloaderURLConnectionDelegate
+
+- (void)didFinishLoadingWithTask:(TBVideoRequestTask *)task
+{
+    _isFinishLoad = task.isFinishLoad;
+}
+
+//网络中断：-1005
+//无网络连接：-1009
+//请求超时：-1001
+//服务器内部错误：-1004
+//找不到服务器：-1003
+- (void)didFailLoadingWithTask:(TBVideoRequestTask *)task WithError:(NSInteger)errorCode
+{
+    //_errorCode = errorCode;
+    NSString *str = nil;
+    switch (errorCode) {
+        case -1001:
+            str = @"请求超时";
+            break;
+        case -1003:
+        case -1004:
+            str = @"服务器错误";
+            break;
+        case -1005:
+            str = @"网络中断";
+            break;
+        case -1009:
+            str = @"无网络连接";
+            break;
+            
+        default:
+            str = [NSString stringWithFormat:@"%@", @"(_errorCode)"];
+            break;
+    }
+    
+//    if (_errorCode) {
+//        [[iToast makeText:str] show];
+//    }
+    
+}
 
 #pragma mark - color
 - (UIColor*)colorWithHex:(NSInteger)hexValue alpha:(CGFloat)alphaValue

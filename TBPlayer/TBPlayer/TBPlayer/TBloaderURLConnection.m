@@ -45,7 +45,6 @@
 - (void)processPendingRequests
 {
     NSMutableArray *requestsCompleted = [NSMutableArray array];  //请求完成的数组
-    //NSLog(@"<<<<<%lu", (unsigned long)self.pendingRequests.count);
     //每次下载一块数据都是一次请求，把这些请求放到数组，遍历数组
     for (AVAssetResourceLoadingRequest *loadingRequest in self.pendingRequests)
     {
@@ -74,11 +73,6 @@
         startOffset = dataRequest.currentOffset;
     }
     
-
-    
-    NSLog(@"-----------%u", self.task.offset +self.task.downLoadingOffset);
-    NSLog(@"-----------%lld", startOffset);
-    NSLog(@"-----------%u", self.task.offset);
     if ((self.task.offset +self.task.downLoadingOffset) < startOffset)
     {
         //NSLog(@"NO DATA FOR REQUEST");
@@ -91,7 +85,6 @@
     
     NSData *filedata = [NSData dataWithContentsOfURL:[NSURL fileURLWithPath:_videoPath] options:NSDataReadingMappedIfSafe error:nil];
     
-   // NSLog(@"??????????????%ld", (unsigned long)filedata.length);
     // This is the total data we have from startOffset to whatever has been downloaded so far
     NSUInteger unreadBytes = self.task.downLoadingOffset - ((NSInteger)startOffset - self.task.offset);
     
@@ -106,10 +99,6 @@
     long long endOffset = startOffset + dataRequest.requestedLength;
     BOOL didRespondFully = (self.task.offset + self.task.downLoadingOffset) >= endOffset;
 
-    //NSLog(@"unreadBytes----%ld-------%ld", (unsigned long)unreadBytes,(unsigned long)dataRequest.requestedLength);
-   // NSLog(@"++++++++++++++%ld",(long)dataRequest.requestedLength);
-    
-    //NSLog(@">>>>>>>>>>>>>%@", self.pendingRequests);
     return didRespondFully;
   
     
@@ -125,7 +114,6 @@
  */
 - (BOOL)resourceLoader:(AVAssetResourceLoader *)resourceLoader shouldWaitForLoadingOfRequestedResource:(AVAssetResourceLoadingRequest *)loadingRequest
 {
-    //NSLog(@"???------------%@", self.pendingRequests);
     [self.pendingRequests addObject:loadingRequest];
     [self dealWithLoadingRequest:loadingRequest];
     

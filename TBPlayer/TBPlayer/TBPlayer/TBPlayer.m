@@ -11,7 +11,7 @@
 #import "TBVideoRequestTask.h"
 #import <MediaPlayer/MediaPlayer.h>
 #import "XCHudHelper.h"
-
+#import "iToast.h"
 #define kScreenHeight ([UIScreen mainScreen].bounds.size.height)
 #define kScreenWidth ([UIScreen mainScreen].bounds.size.width)
 #define IOS_VERSION  ([[[UIDevice currentDevice] systemVersion] floatValue])
@@ -558,7 +558,6 @@ NSString *const kTBPlayerLoadProgressChangedNotification = @"TBPlayerLoadProgres
 //找不到服务器：-1003
 - (void)didFailLoadingWithTask:(TBVideoRequestTask *)task WithError:(NSInteger)errorCode
 {
-    //_errorCode = errorCode;
     NSString *str = nil;
     switch (errorCode) {
         case -1001:
@@ -580,7 +579,7 @@ NSString *const kTBPlayerLoadProgressChangedNotification = @"TBPlayerLoadProgres
             break;
     }
     
-//    if (_errorCode) {
+//    if (errorCode) {
 //        [[iToast makeText:str] show];
 //    }
     

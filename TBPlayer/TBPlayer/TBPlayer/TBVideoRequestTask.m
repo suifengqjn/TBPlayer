@@ -52,7 +52,6 @@
 {
     _url = url;
     _offset = offset;
-    //_data = [NSMutableData data];
     
     //如果建立第二次请求，先移除原来文件，再创建新的
     if (self.taskArr.count >= 1) {
@@ -149,14 +148,17 @@
     if (self.taskArr.count < 2) {
         _isFinishLoad = YES;
         
-        NSString *strUrl = [_url absoluteString];
-        NSString *key = [strUrl stringByReplacingOccurrencesOfString:@"streaming" withString:@"http"];
-                
-        if (self.taskArr.count < 2 && _isFinishLoad == YES) {
-//            [[TBCache sharedIDMMediaCache] copyObjectToCache:_tempPath urlKey:[NSURL URLWithString:key] cacheType:TBCacheTypeVideo];
-//            NSLog(@"---复制文件");
+        //这里自己写需要保存数据的路径
+        NSString *document = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).lastObject;
+        NSString *movePath =  [document stringByAppendingPathComponent:@"保存数据.mp4"];
+
+        BOOL isSuccess = [[NSFileManager defaultManager] copyItemAtPath:_tempPath toPath:movePath error:nil];
+        if (isSuccess) {
+            NSLog(@"rename success");
+        }else{
+            NSLog(@"rename fail");
         }
-        
+        NSLog(@"----%@", movePath);
     }
     
     if ([self.delegate respondsToSelector:@selector(didFinishLoadingWithTask:)]) {

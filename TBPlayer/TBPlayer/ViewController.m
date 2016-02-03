@@ -8,7 +8,7 @@
 
 #import "ViewController.h"
 #import "TBPlayer.h"
-
+#import "XCHudHelper.h"
 @interface ViewController ()
 
 @property (nonatomic, weak) TBPlayer *player;
@@ -22,19 +22,22 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
+    NSString *document = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).lastObject;
+    NSString *movePath =  [document stringByAppendingPathComponent:@"保存数据.mp4"];
     
+    NSURL *localURL = [NSURL fileURLWithPath:movePath];
     
-    
-    NSString *url = [[NSBundle mainBundle] pathForResource:@"112" ofType:@"mp4"];
-    NSURL *url1 = [NSURL URLWithString:url];
     NSURL *url2 = [NSURL URLWithString:@"http://lxcdn.miaopai.com/stream/2JBg-3tXYcq~VXumZWTJgQ__.mp4"];
     
-     [[TBPlayer sharedInstance] playWithUrl:url2 showView:self.view];
+    NSURL *url3 = [NSURL URLWithString:@"http://zyvideo1.oss-cn-qingdao.aliyuncs.com/zyvd/7c/de/04ec95f4fd42d9d01f63b9683ad0"];
+    [[TBPlayer sharedInstance] playWithUrl:url3 showView:self.view];
 
 
 }
 - (IBAction)button:(UIButton *)sender {
-    [[TBPlayer sharedInstance] seekToTime:20.0];
+    //[[TBPlayer sharedInstance] seekToTime:20.0];
+    
+    [XCHudHelper showMessage:@"asd"] ;
 }
 
 

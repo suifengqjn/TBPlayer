@@ -33,7 +33,6 @@
 		C23DDC041C5F603800488FD8 /* TBPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBPlayer.m; sourceTree = "<group>"; };
 		C23DDC051C5F603800488FD8 /* TBVideoRequestTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBVideoRequestTask.h; sourceTree = "<group>"; };
 		C23DDC061C5F603800488FD8 /* TBVideoRequestTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBVideoRequestTask.m; sourceTree = "<group>"; };
-		C23DDC131C5F71DF00488FD8 /* iToast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iToast.h; sourceTree = "<group>"; };
 		C26C5D8B1C5DE4A900BAD17A /* TBPlayer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TBPlayer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C26C5D8F1C5DE4A900BAD17A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		C26C5D911C5DE4A900BAD17A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -69,14 +68,6 @@
 			path = XCHudHelper;
 			sourceTree = "<group>";
 		};
-		C23DDBEE1C5F55E500488FD8 /* iToast */ = {
-			isa = PBXGroup;
-			children = (
-				C23DDC131C5F71DF00488FD8 /* iToast.h */,
-			);
-			path = iToast;
-			sourceTree = "<group>";
-		};
 		C23DDC001C5F603800488FD8 /* TBPlayer */ = {
 			isa = PBXGroup;
 			children = (
@@ -110,7 +101,6 @@
 			isa = PBXGroup;
 			children = (
 				C23DDC001C5F603800488FD8 /* TBPlayer */,
-				C23DDBEE1C5F55E500488FD8 /* iToast */,
 				C23DDBDC1C5F51E300488FD8 /* XCHudHelper */,
 				C26C5D911C5DE4A900BAD17A /* AppDelegate.h */,
 				C26C5D921C5DE4A900BAD17A /* AppDelegate.m */,

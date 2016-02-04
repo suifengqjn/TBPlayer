@@ -14,6 +14,7 @@ FOUNDATION_EXPORT NSString *const kTBPlayerStateChangedNotification;
 FOUNDATION_EXPORT NSString *const kTBPlayerProgressChangedNotification;
 FOUNDATION_EXPORT NSString *const kTBPlayerLoadProgressChangedNotification;
 
+//播放器的几种状态
 typedef NS_ENUM(NSInteger, TBPlayerState) {
     TBPlayerStateBuffering = 1,
     TBPlayerStatePlaying   = 2,
@@ -27,9 +28,9 @@ typedef NS_ENUM(NSInteger, TBPlayerState) {
 @property (nonatomic, readonly) CGFloat       loadedProgress;   //缓冲进度
 @property (nonatomic, readonly) CGFloat       duration;         //视频总时间
 @property (nonatomic, readonly) CGFloat       current;          //当前播放时间
-@property (nonatomic, readonly) CGFloat       progress;         //0~1
+@property (nonatomic, readonly) CGFloat       progress;         //播放进度 0~1
 @property (nonatomic          ) BOOL          stopWhenAppDidEnterBackground;// default is YES
-@property (nonatomic          ) BOOL          cycleToPlay;     // default is NO
+
 
 + (instancetype)sharedInstance;
 - (void)playWithUrl:(NSURL *)url showView:(UIView *)showView;

@@ -27,9 +27,9 @@
     
     NSURL *localURL = [NSURL fileURLWithPath:movePath];
     
-    NSURL *url2 = [NSURL URLWithString:@"http://lxcdn.miaopai.com/stream/2JBg-3tXYcq~VXumZWTJgQ__.mp4"];
+    NSURL *url2 = [NSURL URLWithString:@"http://zyvideo1.oss-cn-qingdao.aliyuncs.com/zyvd/7c/de/04ec95f4fd42d9d01f63b9683ad0"];
     
-    NSURL *url3 = [NSURL URLWithString:@"http://zyvideo1.oss-cn-qingdao.aliyuncs.com/zyvd/7c/de/04ec95f4fd42d9d01f63b9683ad0"];
+    NSURL *url3 = url2;
     [[TBPlayer sharedInstance] playWithUrl:url3 showView:self.view];
 
 

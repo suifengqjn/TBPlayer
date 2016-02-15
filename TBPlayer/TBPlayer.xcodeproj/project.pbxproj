@@ -19,6 +19,7 @@
 		C26C5D991C5DE4A900BAD17A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C26C5D971C5DE4A900BAD17A /* Main.storyboard */; };
 		C26C5D9B1C5DE4A900BAD17A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C26C5D9A1C5DE4A900BAD17A /* Assets.xcassets */; };
 		C26C5D9E1C5DE4A900BAD17A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C26C5D9C1C5DE4A900BAD17A /* LaunchScreen.storyboard */; };
+		C2AD493D1C71A9E20064A0A8 /* 1.png in Resources */ = {isa = PBXBuildFile; fileRef = C2AD493C1C71A9E20064A0A8 /* 1.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +44,7 @@
 		C26C5D9A1C5DE4A900BAD17A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C26C5D9D1C5DE4A900BAD17A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C26C5D9F1C5DE4A900BAD17A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C2AD493C1C71A9E20064A0A8 /* 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +102,7 @@
 		C26C5D8D1C5DE4A900BAD17A /* TBPlayer */ = {
 			isa = PBXGroup;
 			children = (
+				C2AD493B1C71A9AE0064A0A8 /* screenShot */,
 				C23DDC001C5F603800488FD8 /* TBPlayer */,
 				C23DDBDC1C5F51E300488FD8 /* XCHudHelper */,
 				C26C5D911C5DE4A900BAD17A /* AppDelegate.h */,
@@ -121,6 +124,14 @@
 				C26C5D8F1C5DE4A900BAD17A /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		C2AD493B1C71A9AE0064A0A8 /* screenShot */ = {
+			isa = PBXGroup;
+			children = (
+				C2AD493C1C71A9E20064A0A8 /* 1.png */,
+			);
+			path = screenShot;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -184,6 +195,7 @@
 				C26C5D9B1C5DE4A900BAD17A /* Assets.xcassets in Resources */,
 				C23DDBE21C5F51E300488FD8 /* MBProgressHUD.bundle in Resources */,
 				C26C5D991C5DE4A900BAD17A /* Main.storyboard in Resources */,
+				C2AD493D1C71A9E20064A0A8 /* 1.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

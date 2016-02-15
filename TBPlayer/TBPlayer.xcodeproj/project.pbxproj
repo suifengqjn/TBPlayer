@@ -71,6 +71,18 @@
 			path = TBPlayer;
 			sourceTree = "<group>";
 		};
+		C26A80D81C71D43600A572AD /* TBHudhelper */ = {
+			isa = PBXGroup;
+			children = (
+				C26A80D01C71D36A00A572AD /* XCHudHelper.h */,
+				C26A80D11C71D36A00A572AD /* XCHudHelper.m */,
+				C26A80D31C71D37200A572AD /* MBProgressHUD.bundle */,
+				C26A80D41C71D37200A572AD /* MBProgressHUD.h */,
+				C26A80D51C71D37200A572AD /* MBProgressHUD.m */,
+			);
+			name = TBHudhelper;
+			sourceTree = "<group>";
+		};
 		C26C5D821C5DE4A900BAD17A = {
 			isa = PBXGroup;
 			children = (
@@ -90,11 +102,7 @@
 		C26C5D8D1C5DE4A900BAD17A /* TBPlayer */ = {
 			isa = PBXGroup;
 			children = (
-				C26A80D01C71D36A00A572AD /* XCHudHelper.h */,
-				C26A80D11C71D36A00A572AD /* XCHudHelper.m */,
-				C26A80D31C71D37200A572AD /* MBProgressHUD.bundle */,
-				C26A80D41C71D37200A572AD /* MBProgressHUD.h */,
-				C26A80D51C71D37200A572AD /* MBProgressHUD.m */,
+				C26A80D81C71D43600A572AD /* TBHudhelper */,
 				C2AD493B1C71A9AE0064A0A8 /* screenShot */,
 				C23DDC001C5F603800488FD8 /* TBPlayer */,
 				C26C5D911C5DE4A900BAD17A /* AppDelegate.h */,

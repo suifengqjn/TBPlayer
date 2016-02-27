@@ -182,6 +182,11 @@ NSString *const kTBPlayerLoadProgressChangedNotification = @"TBPlayerLoadProgres
 }
 
 
+- (void)updateFrame
+{
+    self.currentPlayerLayer.frame = CGRectMake(0, 44, _showView.bounds.size.width, _showView.bounds.size.height-44);
+}
+
 - (void)seekToTime:(CGFloat)seconds
 {
     if (self.state == TBPlayerStateStopped) {

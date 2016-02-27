@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C20C8B661C81FADB00CE5C77 /* avplayerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C20C8B651C81FADB00CE5C77 /* avplayerVC.m */; };
 		C23DDC071C5F603800488FD8 /* TBloaderURLConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = C23DDC021C5F603800488FD8 /* TBloaderURLConnection.m */; };
 		C23DDC081C5F603800488FD8 /* TBPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = C23DDC041C5F603800488FD8 /* TBPlayer.m */; };
 		C23DDC091C5F603800488FD8 /* TBVideoRequestTask.m in Sources */ = {isa = PBXBuildFile; fileRef = C23DDC061C5F603800488FD8 /* TBVideoRequestTask.m */; };
@@ -23,6 +24,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C20C8B641C81FADB00CE5C77 /* avplayerVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = avplayerVC.h; sourceTree = "<group>"; };
+		C20C8B651C81FADB00CE5C77 /* avplayerVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = avplayerVC.m; sourceTree = "<group>"; };
 		C23DDC011C5F603800488FD8 /* TBloaderURLConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBloaderURLConnection.h; sourceTree = "<group>"; };
 		C23DDC021C5F603800488FD8 /* TBloaderURLConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBloaderURLConnection.m; sourceTree = "<group>"; };
 		C23DDC031C5F603800488FD8 /* TBPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBPlayer.h; sourceTree = "<group>"; };
@@ -109,6 +112,8 @@
 				C26C5D921C5DE4A900BAD17A /* AppDelegate.m */,
 				C26C5D941C5DE4A900BAD17A /* ViewController.h */,
 				C26C5D951C5DE4A900BAD17A /* ViewController.m */,
+				C20C8B641C81FADB00CE5C77 /* avplayerVC.h */,
+				C20C8B651C81FADB00CE5C77 /* avplayerVC.m */,
 				C26C5D971C5DE4A900BAD17A /* Main.storyboard */,
 				C26C5D9A1C5DE4A900BAD17A /* Assets.xcassets */,
 				C26C5D9C1C5DE4A900BAD17A /* LaunchScreen.storyboard */,
@@ -209,6 +214,7 @@
 				C23DDC091C5F603800488FD8 /* TBVideoRequestTask.m in Sources */,
 				C23DDC071C5F603800488FD8 /* TBloaderURLConnection.m in Sources */,
 				C26C5D961C5DE4A900BAD17A /* ViewController.m in Sources */,
+				C20C8B661C81FADB00CE5C77 /* avplayerVC.m in Sources */,
 				C23DDC081C5F603800488FD8 /* TBPlayer.m in Sources */,
 				C26C5D931C5DE4A900BAD17A /* AppDelegate.m in Sources */,
 				C26C5D901C5DE4A900BAD17A /* main.m in Sources */,

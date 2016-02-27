@@ -58,11 +58,8 @@
 
 - (void)tapClick
 {
-    
-    
-    self.showView.transform = CGAffineTransformIdentity;
-    
-    [self.player updateFrame];
+    [self.player stop];
+    [self dismissViewControllerAnimated:NO completion:nil];
 }
 
 @end

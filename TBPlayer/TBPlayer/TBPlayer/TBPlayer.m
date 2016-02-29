@@ -44,6 +44,9 @@ NSString *const kTBPlayerLoadProgressChangedNotification = @"TBPlayerLoadProgres
 @property (nonatomic, strong) UIProgressView *videoProgressView;  //缓冲进度条
 @property (nonatomic, strong) UISlider       *playSlider;  //滑竿
 @property (nonatomic, strong) UIButton       *stopButton;//播放暂停按钮
+@property (nonatomic, strong) UIButton       *screenBUtton;//全屏按钮
+@property (nonatomic, assign) BOOL           isFullScreen;
+
 @end
 
 @implementation TBPlayer
@@ -179,12 +182,25 @@ NSString *const kTBPlayerLoadProgressChangedNotification = @"TBPlayerLoadProgres
     [[XCHudHelper sharedInstance] showHudOnView:_showView caption:nil image:nil acitivity:YES autoHideTime:0];
     
     [[NSNotificationCenter defaultCenter] postNotificationName:kTBPlayerProgressChangedNotification object:nil];
+    
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(halfScreen)];
+    
+    [showView addGestureRecognizer:tap];
 }
 
 
-- (void)updateFrame
+- (void)fullScreen
 {
-    self.currentPlayerLayer.frame = CGRectMake(0, 44, _showView.bounds.size.width, _showView.bounds.size.height-44);
+    _navBar.hidden = YES;
+    self.currentPlayerLayer.transform = CATransform3DMakeRotation(M_PI/2, 0, 0, 1);
+    self.currentPlayerLayer.frame = CGRectMake(0, 0, kScreenWidth, kScreenHeight);
+}
+
+- (void)halfScreen
+{
+    _navBar.hidden = NO;
+    self.currentPlayerLayer.transform = CATransform3DIdentity;
+    self.currentPlayerLayer.frame = CGRectMake(0, 0, kScreenWidth, kScreenHeight);
 }
 
 - (void)seekToTime:(CGFloat)seconds
@@ -451,7 +467,7 @@ NSString *const kTBPlayerLoadProgressChangedNotification = @"TBPlayerLoadProgres
         self.totolTimeLabel = [[UILabel alloc] init];
         _totolTimeLabel.textColor = [self colorWithHex:0xffffff alpha:1.0];
         _totolTimeLabel.font = [UIFont systemFontOfSize:10.0];
-        _totolTimeLabel.frame = CGRectMake(kScreenWidth-52, 0, 52, 44);
+        _totolTimeLabel.frame = CGRectMake(kScreenWidth-52-15, 0, 52, 44);
         _totolTimeLabel.textAlignment = NSTextAlignmentLeft;
         [_navBar addSubview:_totolTimeLabel];
     }
@@ -462,7 +478,7 @@ NSString *const kTBPlayerLoadProgressChangedNotification = @"TBPlayerLoadProgres
         self.videoProgressView = [[UIProgressView alloc] init];
         _videoProgressView.progressTintColor = [self colorWithHex:0xffffff alpha:1.0];  //填充部分颜色
         _videoProgressView.trackTintColor = [self colorWithHex:0xffffff alpha:0.18];   // 未填充部分颜色
-        _videoProgressView.frame = CGRectMake(62+30, 21, kScreenWidth-124-44+15, 20);
+        _videoProgressView.frame = CGRectMake(62+30, 21, kScreenWidth-124-44, 20);
         _videoProgressView.layer.cornerRadius = 1.5;
         _videoProgressView.layer.masksToBounds = YES;
         CGAffineTransform transform = CGAffineTransformMakeScale(1.0, 1.5);
@@ -475,7 +491,7 @@ NSString *const kTBPlayerLoadProgressChangedNotification = @"TBPlayerLoadProgres
     if (!self.playSlider) {
         
         self.playSlider = [[UISlider alloc] init];
-        _playSlider.frame = CGRectMake(62+30, 0, kScreenWidth-124-44+15, 44);
+        _playSlider.frame = CGRectMake(62+30, 0, kScreenWidth-124-44, 44);
         [_playSlider setThumbImage:[UIImage imageNamed:@"icon_progress"] forState:UIControlStateNormal];
         _playSlider.minimumTrackTintColor = [UIColor clearColor];
         _playSlider.maximumTrackTintColor = [UIColor clearColor];
@@ -497,7 +513,18 @@ NSString *const kTBPlayerLoadProgressChangedNotification = @"TBPlayerLoadProgres
         [_navBar addSubview:_stopButton];
     }
     
+    //全屏按钮
+    if (!self.screenBUtton) {
+        self.screenBUtton = [[UIButton alloc] init];
+        _screenBUtton.frame = CGRectMake(kScreenWidth - 40, 0, 44, 44);
+        [_screenBUtton addTarget:self action:@selector(fullScreen) forControlEvents:UIControlEventTouchUpInside];
+        [_screenBUtton setImage:[UIImage imageNamed:@"quanping"] forState:UIControlStateNormal];
+        [_screenBUtton setImage:[UIImage imageNamed:@"quanping"] forState:UIControlStateHighlighted];
+        [_navBar addSubview:_screenBUtton];
+    }
+    
 }
+
 
 //手指结束拖动，播放器从当前点开始播放，开启滑竿的时间走动
 - (void)playSliderChangeEnd:(UISlider *)slider

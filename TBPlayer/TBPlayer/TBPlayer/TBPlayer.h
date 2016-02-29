@@ -40,5 +40,6 @@ typedef NS_ENUM(NSInteger, TBPlayerState) {
 - (void)pause;
 - (void)stop;
 
-- (void)updateFrame;  //全屏
+- (void)fullScreen;  //全屏
+- (void)halfScreen;   //半屏
 @end

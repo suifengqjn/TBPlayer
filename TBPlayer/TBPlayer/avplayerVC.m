@@ -24,7 +24,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.showView = [[UIView alloc] init];
-    self.showView.frame = CGRectMake(0, 0, kScreenHeight, kScreenWidth);
+    self.showView.backgroundColor = [UIColor redColor];
+    self.showView.frame = CGRectMake(0, 0, kScreenWidth, kScreenHeight);
     [self.view addSubview:self.showView];
     
     
@@ -36,30 +37,11 @@
     
     NSURL *url2 = [NSURL URLWithString:@"http://zyvideo1.oss-cn-qingdao.aliyuncs.com/zyvd/7c/de/04ec95f4fd42d9d01f63b9683ad0"];
     
-    NSURL *url3 = url2;
-    [[TBPlayer sharedInstance] playWithUrl:localURL showView:self.showView];
-    
-    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapClick)];
-    
-    [self.showView addGestureRecognizer:tap];
-    
-    self.showView.transform=CGAffineTransformMakeRotation(M_PI/2);
-    self.showView.frame = CGRectMake(0, 0, kScreenWidth, kScreenHeight);
+    [[TBPlayer sharedInstance] playWithUrl:url2 showView:self.showView];
+
 }
 
 
-- (void)quanping
-{
-    self.showView.frame = CGRectMake(0, 0, kScreenHeight, kScreenWidth);
-    [self.player updateFrame];
-    self.showView.transform=CGAffineTransformMakeRotation(M_PI/2);
-    self.showView.frame = CGRectMake(0, 0, kScreenWidth, kScreenHeight);
-}
 
-- (void)tapClick
-{
-    [self.player stop];
-    [self dismissViewControllerAnimated:NO completion:nil];
-}
 
 @end

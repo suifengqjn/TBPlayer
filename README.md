@@ -9,3 +9,15 @@
 * 如果你觉得不错，还请为我star一个，
 * 如果在使用过程中遇到BUG，希望你能Issues我，谢谢
 
+###用法
+
+需要的变量
+url：视频网址
+showView:放视频的视图
+```
+[[TBPlayer sharedInstance] playWithUrl:url2 showView:self.view];
+```
+
+另外自己可以在` TBVideoRequestTask ` 中设置视频的缓存路径，下次播放直接从缓冲读取即可。
+
+

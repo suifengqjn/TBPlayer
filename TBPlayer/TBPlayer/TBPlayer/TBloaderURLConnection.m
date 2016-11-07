@@ -5,6 +5,7 @@
 //  Created by qianjianeng on 15/9/15.
 //  Copyright (c) 2015年 qianjianeng. All rights reserved.
 //
+//// github地址：https://github.com/suifengqjn/TBPlayer
 
 #import "TBloaderURLConnection.h"
 #import <Foundation/Foundation.h>

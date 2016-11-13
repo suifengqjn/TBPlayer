@@ -8,6 +8,6 @@ Pod::Spec.new do |s|
     s.platform     = :ios, '7.0'
     s.source       = {:git => 'https://github.com/suifengqjn/TBPlayer.git', :tag => s.version}
     s.source_files = 'TBPlayer/**/*.{h,m}'
-    s.resource     = 'TBPlayer/TBPlayer.bundle'
+    s.resource     = 'TBPlayer/TBPlayer/TBPlayer.bundle'
     s.requires_arc = true
 end

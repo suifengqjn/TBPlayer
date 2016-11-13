@@ -231,13 +231,13 @@ NSString *const kTBPlayerLoadProgressChangedNotification = @"TBPlayerLoadProgres
         return;
     }
     if (self.state == TBPlayerStatePlaying) {
-        [_stopButton setImage:[UIImage imageNamed:@"icon_play"] forState:UIControlStateNormal];
-        [_stopButton setImage:[UIImage imageNamed:@"icon_play_hl"] forState:UIControlStateHighlighted];
+        [_stopButton setImage:[self imageNamed:@"icon_play"] forState:UIControlStateNormal];
+        [_stopButton setImage:[self imageNamed:@"icon_play_hl"] forState:UIControlStateHighlighted];
         [self.player pause];
         self.state = TBPlayerStatePause;
     } else if (self.state == TBPlayerStatePause) {
-        [_stopButton setImage:[UIImage imageNamed:@"icon_pause"] forState:UIControlStateNormal];
-        [_stopButton setImage:[UIImage imageNamed:@"icon_pause_hl"] forState:UIControlStateHighlighted];
+        [_stopButton setImage:[self imageNamed:@"icon_pause"] forState:UIControlStateNormal];
+        [_stopButton setImage:[self imageNamed:@"icon_pause_hl"] forState:UIControlStateHighlighted];
         [self.player play];
         self.state = TBPlayerStatePlaying;
     }
@@ -250,8 +250,8 @@ NSString *const kTBPlayerLoadProgressChangedNotification = @"TBPlayerLoadProgres
         return;
     }
     
-    [_stopButton setImage:[UIImage imageNamed:@"icon_pause"] forState:UIControlStateNormal];
-    [_stopButton setImage:[UIImage imageNamed:@"icon_pause_hl"] forState:UIControlStateHighlighted];
+    [_stopButton setImage:[self imageNamed:@"icon_pause"] forState:UIControlStateNormal];
+    [_stopButton setImage:[self imageNamed:@"icon_pause_hl"] forState:UIControlStateHighlighted];
     self.isPauseByUser = NO;
     [self.player play];
 }
@@ -261,8 +261,8 @@ NSString *const kTBPlayerLoadProgressChangedNotification = @"TBPlayerLoadProgres
     if (!self.currentPlayerItem) {
         return;
     }
-    [_stopButton setImage:[UIImage imageNamed:@"icon_play"] forState:UIControlStateNormal];
-    [_stopButton setImage:[UIImage imageNamed:@"icon_play_hl"] forState:UIControlStateHighlighted];
+    [_stopButton setImage:[self imageNamed:@"icon_play"] forState:UIControlStateNormal];
+    [_stopButton setImage:[self imageNamed:@"icon_play_hl"] forState:UIControlStateHighlighted];
     self.isPauseByUser = YES;
     self.state = TBPlayerStatePause;
     [self.player pause];
@@ -493,7 +493,7 @@ NSString *const kTBPlayerLoadProgressChangedNotification = @"TBPlayerLoadProgres
         
         self.playSlider = [[UISlider alloc] init];
         _playSlider.frame = CGRectMake(62+30, 0, kScreenWidth-124-44, 44);
-        [_playSlider setThumbImage:[UIImage imageNamed:@"icon_progress"] forState:UIControlStateNormal];
+        [_playSlider setThumbImage:[self imageNamed:@"icon_progress"] forState:UIControlStateNormal];
         _playSlider.minimumTrackTintColor = [UIColor clearColor];
         _playSlider.maximumTrackTintColor = [UIColor clearColor];
         [_playSlider addTarget:self action:@selector(playSliderChange:) forControlEvents:UIControlEventValueChanged]; //拖动滑竿更新时间
@@ -509,8 +509,8 @@ NSString *const kTBPlayerLoadProgressChangedNotification = @"TBPlayerLoadProgres
         self.stopButton = [UIButton buttonWithType:UIButtonTypeCustom];
         _stopButton.frame = CGRectMake(0, 0, 44, 44);
         [_stopButton addTarget:self action:@selector(resumeOrPause) forControlEvents:UIControlEventTouchUpInside];
-        [_stopButton setImage:[UIImage imageNamed:@"icon_pause"] forState:UIControlStateNormal];
-        [_stopButton setImage:[UIImage imageNamed:@"icon_pause_hl"] forState:UIControlStateHighlighted];
+        [_stopButton setImage:[self imageNamed:@"icon_pause"] forState:UIControlStateNormal];
+        [_stopButton setImage:[self imageNamed:@"icon_pause_hl"] forState:UIControlStateHighlighted];
         [_navBar addSubview:_stopButton];
     }
     
@@ -519,8 +519,8 @@ NSString *const kTBPlayerLoadProgressChangedNotification = @"TBPlayerLoadProgres
         self.screenBUtton = [[UIButton alloc] init];
         _screenBUtton.frame = CGRectMake(kScreenWidth - 40, 0, 44, 44);
         [_screenBUtton addTarget:self action:@selector(fullScreen) forControlEvents:UIControlEventTouchUpInside];
-        [_screenBUtton setImage:[UIImage imageNamed:@"quanping"] forState:UIControlStateNormal];
-        [_screenBUtton setImage:[UIImage imageNamed:@"quanping"] forState:UIControlStateHighlighted];
+        [_screenBUtton setImage:[self imageNamed:@"quanping"] forState:UIControlStateNormal];
+        [_screenBUtton setImage:[self imageNamed:@"quanping"] forState:UIControlStateHighlighted];
         [_navBar addSubview:_screenBUtton];
     }
     
@@ -532,8 +532,8 @@ NSString *const kTBPlayerLoadProgressChangedNotification = @"TBPlayerLoadProgres
 {
     [self seekToTime:slider.value];
     [self updateCurrentTime:slider.value];
-    [_stopButton setImage:[UIImage imageNamed:@"icon_pause"] forState:UIControlStateNormal];
-    [_stopButton setImage:[UIImage imageNamed:@"icon_pause_hl"] forState:UIControlStateHighlighted];
+    [_stopButton setImage:[self imageNamed:@"icon_pause"] forState:UIControlStateNormal];
+    [_stopButton setImage:[self imageNamed:@"icon_pause_hl"] forState:UIControlStateHighlighted];
 }
 
 //手指正在拖动，播放器继续播放，但是停止滑竿的时间走动
@@ -632,6 +632,17 @@ NSString *const kTBPlayerLoadProgressChangedNotification = @"TBPlayerLoadProgres
 - (void)dealloc
 {
     [self releasePlayer];
+}
+
+
+#pragma mark - image addtion
+- (UIImage *)imageNamed:(NSString *)imageName {
+    
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"TBPlayer" ofType:@"bundle"];
+
+     NSString *imagePath=  [path stringByAppendingPathComponent:@"images"];
+    return [UIImage imageWithContentsOfFile:[imagePath stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.png", imageName]]];
+    
 }
 
 @end

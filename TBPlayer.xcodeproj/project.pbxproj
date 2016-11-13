@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1D7B79291DD82B4E00501656 /* TBPlayer.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1D7B79281DD82B4E00501656 /* TBPlayer.bundle */; };
 		C20C8B661C81FADB00CE5C77 /* avplayerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C20C8B651C81FADB00CE5C77 /* avplayerVC.m */; };
 		C23DDC071C5F603800488FD8 /* TBloaderURLConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = C23DDC021C5F603800488FD8 /* TBloaderURLConnection.m */; };
 		C23DDC081C5F603800488FD8 /* TBPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = C23DDC041C5F603800488FD8 /* TBPlayer.m */; };
@@ -24,6 +25,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1D7B79281DD82B4E00501656 /* TBPlayer.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = TBPlayer.bundle; sourceTree = "<group>"; };
 		C20C8B641C81FADB00CE5C77 /* avplayerVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = avplayerVC.h; sourceTree = "<group>"; };
 		C20C8B651C81FADB00CE5C77 /* avplayerVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = avplayerVC.m; sourceTree = "<group>"; };
 		C23DDC011C5F603800488FD8 /* TBloaderURLConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBloaderURLConnection.h; sourceTree = "<group>"; };
@@ -64,6 +66,7 @@
 		C23DDC001C5F603800488FD8 /* TBPlayer */ = {
 			isa = PBXGroup;
 			children = (
+				1D7B79281DD82B4E00501656 /* TBPlayer.bundle */,
 				C23DDC031C5F603800488FD8 /* TBPlayer.h */,
 				C23DDC041C5F603800488FD8 /* TBPlayer.m */,
 				C23DDC011C5F603800488FD8 /* TBloaderURLConnection.h */,
@@ -165,7 +168,7 @@
 		C26C5D831C5DE4A900BAD17A /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0720;
+				LastUpgradeCheck = 0810;
 				ORGANIZATIONNAME = SF;
 				TargetAttributes = {
 					C26C5D8A1C5DE4A900BAD17A = {
@@ -198,6 +201,7 @@
 			files = (
 				C26C5D9E1C5DE4A900BAD17A /* LaunchScreen.storyboard in Resources */,
 				C26C5D9B1C5DE4A900BAD17A /* Assets.xcassets in Resources */,
+				1D7B79291DD82B4E00501656 /* TBPlayer.bundle in Resources */,
 				C26A80D61C71D37200A572AD /* MBProgressHUD.bundle in Resources */,
 				C26C5D991C5DE4A900BAD17A /* Main.storyboard in Resources */,
 				C2AD493D1C71A9E20064A0A8 /* 1.png in Resources */,
@@ -258,8 +262,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -301,8 +307,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";

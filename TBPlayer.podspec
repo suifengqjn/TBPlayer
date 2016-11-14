@@ -9,7 +9,7 @@ Pod::Spec.new do |s|
   s.license      = { :type => 'MIT', :file => 'LICENSE' }
   s.author       = { 'qianjianeng' => '329426491@qq.comm' }
   s.source       = { :git => "https://github.com/suifengqjn/TBPlayer.git", :tag => '1.0' }
-  s.source_files = 'Classes/**/*.{h,m}'
+  s.source_files = 'TBPlayer/Classes/**/*.{h,m}'
   s.resource     = 'TBPlayer/Classes/TBPlayer.bundle'
   #s.frameworks   = "CoreGraphics", "QuartzCore"
   s.requires_arc = true

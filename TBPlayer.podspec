@@ -6,9 +6,9 @@ Pod::Spec.new do |s|
     s.license      = 'MIT'
     s.authors      = {'suifengqjn' => '329426491@qq.com'}
     s.platform     = :ios, '7.0'
-    s.source       = {:git => 'https://github.com/suifengqjn/TBPlayer.git', :tag => s.version}
-    s.source_files  = "TBPlayer", "TBPlayer/TBPlayer/**/*.{h,m}"
-    s.exclude_files = "TBPlayer/Exclude"
+    s.source       = {:git => 'https://github.com/suifengqjn/TBPlayer.git', :tag => '1.1'}
+    s.source_files  = 'TBPlayer", "TBPlayer/TBPlayer/**/*.{h,m}'
+    s.exclude_files = 'TBPlayer/Exclude'
     s.resource     = 'TBPlayer/TBPlayer.bundle'
     s.requires_arc = true
 end

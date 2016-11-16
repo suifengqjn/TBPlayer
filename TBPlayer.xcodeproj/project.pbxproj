@@ -110,6 +110,7 @@
 		1D4EE1011DDBFF7900DB2892 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				1D4EE1091DDBFF7900DB2892 /* XCHudHelper */,
 				1D4EE1021DDBFF7900DB2892 /* TBloaderURLConnection.h */,
 				1D4EE1031DDBFF7900DB2892 /* TBloaderURLConnection.m */,
 				1D4EE1041DDBFF7900DB2892 /* TBPlayer.bundle */,
@@ -117,7 +118,6 @@
 				1D4EE1061DDBFF7900DB2892 /* TBPlayer.m */,
 				1D4EE1071DDBFF7900DB2892 /* TBVideoRequestTask.h */,
 				1D4EE1081DDBFF7900DB2892 /* TBVideoRequestTask.m */,
-				1D4EE1091DDBFF7900DB2892 /* XCHudHelper */,
 			);
 			path = Classes;
 			sourceTree = "<group>";

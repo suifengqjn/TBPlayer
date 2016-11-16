@@ -2,7 +2,7 @@
 //  AppDelegate.h
 //  TBPlayer
 //
-//  Created by qianjianeng on 16/1/31.
+//  Created by qianjn on 2016/11/16.
 //  Copyright © 2016年 SF. All rights reserved.
 //
 

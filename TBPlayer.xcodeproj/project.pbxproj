@@ -83,6 +83,7 @@
 			isa = PBXGroup;
 			children = (
 				1D4EE1161DDBFF7F00DB2892 /* screenShot */,
+				1D4EE1091DDBFF7900DB2892 /* XCHudHelper */,
 				1D4EE1011DDBFF7900DB2892 /* Classes */,
 				1D4EE0ED1DDBFF0800DB2892 /* AppDelegate.h */,
 				1D4EE0EE1DDBFF0800DB2892 /* AppDelegate.m */,
@@ -110,7 +111,6 @@
 		1D4EE1011DDBFF7900DB2892 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				1D4EE1091DDBFF7900DB2892 /* XCHudHelper */,
 				1D4EE1021DDBFF7900DB2892 /* TBloaderURLConnection.h */,
 				1D4EE1031DDBFF7900DB2892 /* TBloaderURLConnection.m */,
 				1D4EE1041DDBFF7900DB2892 /* TBPlayer.bundle */,
@@ -131,7 +131,8 @@
 				1D4EE10D1DDBFF7900DB2892 /* XCHudHelper.h */,
 				1D4EE10E1DDBFF7900DB2892 /* XCHudHelper.m */,
 			);
-			path = XCHudHelper;
+			name = XCHudHelper;
+			path = Classes/XCHudHelper;
 			sourceTree = "<group>";
 		};
 		1D4EE1161DDBFF7F00DB2892 /* screenShot */ = {

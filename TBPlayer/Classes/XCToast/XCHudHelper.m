@@ -32,20 +32,21 @@
            autoHideTime:(NSTimeInterval)time1 {
     
     if (_hud) {
-        [_hud hide:NO];
+        [_hud hideAnimated:NO];
     }
     
-    self.hud = [[MBProgressHUD alloc] initWithWindow:[[UIApplication sharedApplication] delegate].window];
+    
+    self.hud = [[MBProgressHUD alloc] initWithView:[[UIApplication sharedApplication] delegate].window];
     [[[UIApplication sharedApplication] delegate].window addSubview:self.hud];
-    self.hud.labelText = caption;
+    self.hud.label.text = caption;
     self.hud.customView = [[UIImageView alloc] initWithImage:image];
     self.hud.customView.bounds = CGRectMake(0, 0, 100, 100);
     self.hud.mode = image ? MBProgressHUDModeCustomView : MBProgressHUDModeIndeterminate;
     self.hud.animationType = MBProgressHUDAnimationFade;
     self.hud.removeFromSuperViewOnHide = YES;
-    [self.hud show:YES];
+    [self.hud showAnimated:YES];
     if (time1 > 0) {
-        [self.hud hide:YES afterDelay:time1];
+        [self.hud hideAnimated:YES afterDelay:time1];
     }
 }
 
@@ -56,36 +57,36 @@
          autoHideTime:(NSTimeInterval)time1 {
     
     if (_hud) {
-        [_hud hide:NO];
+        [_hud hideAnimated:NO];
     }
     
     self.hud = [[MBProgressHUD alloc] initWithView:view];
     [view addSubview:self.hud];
-    self.hud.labelText = caption;
+    self.hud.label.text = caption;
     self.hud.customView = [[UIImageView alloc] initWithImage:image];
     self.hud.customView.bounds = CGRectMake(0, 0, 100, 100);
     self.hud.mode = image ? MBProgressHUDModeCustomView : MBProgressHUDModeIndeterminate;
     self.hud.animationType = MBProgressHUDAnimationFade;
-    [self.hud show:YES];
+    [self.hud showAnimated:YES];
     if (time1 > 0) {
-        [self.hud hide:YES afterDelay:time1];
+        [self.hud hideAnimated:YES afterDelay:time1];
     }
 }
 
 - (void)setCaption:(NSString *)caption {
-    self.hud.labelText = caption;
+    self.hud.label.text = caption;
 }
 
 
 - (void)hideHud {
     if (_hud) {
-        [_hud hide:YES];
+        [_hud hideAnimated:YES];
     }
 }
 
 - (void)hideHudAfter:(NSTimeInterval)time1 {
     if (_hud) {
-        [_hud hide:YES afterDelay:time1];
+        [_hud hideAnimated:YES afterDelay:time1];
     }
 }
 
@@ -117,7 +118,7 @@
     if (view == nil) view = [[UIApplication sharedApplication].windows lastObject];
     // 快速显示一个提示信息
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:view animated:YES];
-    hud.labelText = text;
+    hud.label.text = text;
     // 设置图片
     hud.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:[NSString stringWithFormat:@"MBProgressHUD.bundle/%@", icon]]];
     // 再设置模式
@@ -127,7 +128,7 @@
     hud.removeFromSuperViewOnHide = YES;
     
     // 1.0秒之后再消失
-    [hud hide:YES afterDelay:1.0];
+    [hud hideAnimated:YES afterDelay:1.0];
 }
 
 
@@ -140,13 +141,13 @@
     if (view == nil) view = [[UIApplication sharedApplication].windows lastObject];
     // 快速显示一个提示信息
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:view animated:YES];
-    hud.labelText = message;
+    hud.label.text = message;
     // 隐藏时候从父控件中移除
     hud.removeFromSuperViewOnHide = YES;
     // YES代表需要蒙版效果
     //hud.dimBackground = YES;
     // 100秒之后再消失
-    [hud hide:YES afterDelay:100.0];
+    [hud hideAnimated:YES afterDelay:100.0];
 }
 
 

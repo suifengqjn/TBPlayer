@@ -1,5 +1,11 @@
 # TBPlayer
 
+
+## 诚招继任者
+因本人不做ios开发好几年，部分技术也已经遗忘，但是还有许多开发者需要此项目，所以我希望有一个人可以继续更新下去，技术问题也一起讨论。最好是建个qq群，方便大家一起讨论。
+首页信息可完全自定义，包括放你的赞助码，只要不放广告就行。如有意向，微信联系：cywt123
+
+
 >添加cocoapods 中，请下载[1.0tag](https://github.com/suifengqjn/TBPlayer/archive/1.0.zip)(https://github.com/suifengqjn/TBPlayer/archive/1.0.zip)
 
 
